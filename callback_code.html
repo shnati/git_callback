@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Display Code from URL</title>
+</head>
+<body>
+    <p id="codeDisplay"></p>
+
+    <script>
+        // Get the URL parameters
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+
+        // Get the value of the "code" parameter
+        const codeValue = urlParams.get('code');
+
+        // Display the code value in the HTML element
+        const codeDisplayElement = document.getElementById('codeDisplay');
+        codeDisplayElement.textContent = `Code: ${codeValue}`;
+    </script>
+</body>
+</html>
