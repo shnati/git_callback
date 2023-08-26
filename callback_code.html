@@ -7,16 +7,28 @@
     <p id="codeDisplay"></p>
 
     <script>
-        // Get the URL parameters
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
+        // Get the URL without query parameters
+        const baseUrl = window.location.href.split('?')[0];
 
         // Get the value of the "code" parameter
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
         const codeValue = urlParams.get('code');
 
-        // Display the code value in the HTML element
+        // Check the conditions and display the appropriate text
+        let textToDisplay;
+        if (codeValue !== null && codeValue.length > 19 && codeValue.length <= 21) {
+            textToDisplay = `Verification Code: ${codeValue}`;
+        } else {
+            textToDisplay = "-1";
+        }
+
+        // Display the text in the HTML element
         const codeDisplayElement = document.getElementById('codeDisplay');
-        codeDisplayElement.textContent = `Verification Code: ${codeValue}`;
+        codeDisplayElement.textContent = textToDisplay;
+
+        // Update the URL to remove query parameters
+        history.replaceState({}, document.title, baseUrl);
     </script>
 </body>
 </html>
