@@ -17,7 +17,7 @@
 
         // Check the conditions and display the appropriate text
         let textToDisplay;
-        if (codeValue !== null && codeValue.length > 19 && codeValue.length <= 21) {
+        if (codeValue !== null && codeValue.length > 19 && codeValue.length < 21) {
             textToDisplay = `Verification Code: ${codeValue}`;
         } else {
             textToDisplay = "-1";
